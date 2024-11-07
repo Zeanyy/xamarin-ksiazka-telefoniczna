@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<FlyoutPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Knonkaty.MainPage"
+            NavigationPage.HasNavigationBar="False"
+            Title="Menu">
+    <FlyoutPage.Flyout>
+        <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                Title="MenuPage">
+            <StackLayout Margin="10">
+                <Label FontSize="Title" TextColor="White" FontAttributes="Bold" Text="Menu"/>
+                <Button BorderWidth="2" BorderColor="Silver" TextColor="White" BackgroundColor="Transparent" FontFamily="Helvetica Neue" Text="Dodaj kontakt" Clicked="addPerson"/>
+                <Button BorderWidth="2" BorderColor="Silver" TextColor="White" BackgroundColor="Transparent" FontFamily="Helvetica Neue" Text="Edytuj kontakt" Clicked="mofdifyPerson"/>
+                <Button BorderWidth="2" BorderColor="Silver" TextColor="White" BackgroundColor="Transparent" FontFamily="Helvetica Neue" Text="Usuń kontakt" Clicked="removePerson"/>
+                <BoxView HorizontalOptions="FillAndExpand" HeightRequest="2" Color="Black"/>
+                <Button BorderWidth="2" BorderColor="Silver" TextColor="White" BackgroundColor="Transparent" FontFamily="Helvetica Neue" Text="Nowa tabela" Clicked="changeTable"/>
+                <Button BorderWidth="2" BorderColor="Silver" TextColor="White" BackgroundColor="Transparent" FontFamily="Helvetica Neue" Text="Zamknij" Clicked="closeTable"/>
+            </StackLayout>
+        </ContentPage>
+    </FlyoutPage.Flyout>
+    <FlyoutPage.Detail>
+        <NavigationPage>
+            <x:Arguments>
+                <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                x:Class="Knonkaty.MainPage">
+                    <ContentPage.ToolbarItems>
+                        <ToolbarItem Text="Nowa baza" Clicked="changeTable"/>
+                        <ToolbarItem Text="Zamknij" Clicked="closeTable"/>
+                    </ContentPage.ToolbarItems>
+                    <Grid Margin="30">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="10"/>
+                            <RowDefinition Height="40"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <SearchBar x:Name="searchBar" BackgroundColor="gray" Grid.ColumnSpan="5" TextChanged="searchValue"/>
+
+                        <ListView x:Name="listView" Grid.Row="1" Grid.ColumnSpan="5" BackgroundColor="LightGray">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <ViewCell.ContextActions>
+                                            <MenuItem Text="Modyfikuj" Clicked="mofdifyPerson"/>
+                                            <MenuItem Text="Usuń" Clicked="removePerson"/>
+                                        </ViewCell.ContextActions>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="{Binding name}" FontSize="Large" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" TextColor="Black"/>
+                                            <Label Text="{Binding surname}" FontSize="Large" HorizontalOptions="StartAndExpand" VerticalOptions="Center" TextColor="Black"/>
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+
+                        <ProgressBar x:Name="progressBar" Grid.Row="2" Grid.ColumnSpan="5"/>
+
+                        <Button Text="" Grid.Row="3" Grid.Column="1" Clicked="previousPage"/>
+                        <Button Text="" Grid.Row="3" Grid.Column="3" Clicked="nextPage"/>
+                        <Label x:Name="labelPage" Text="1" Grid.Row="3" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center" FontSize="18"/>
+                    </Grid>
+                </ContentPage>
+            </x:Arguments>
+        </NavigationPage>
+    </FlyoutPage.Detail>
+</FlyoutPage>

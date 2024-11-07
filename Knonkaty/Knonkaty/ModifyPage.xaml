@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Knonkaty.ModifyPage">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Label Text="Modyfikuj Kontakt" Grid.Column="1" Grid.ColumnSpan="3" HorizontalTextAlignment="Center" FontSize="25" FontAttributes="Bold"/>
+
+        <Label Text="Imie:" Grid.Row="1" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Center" FontSize="20"/>
+        <Entry x:Name="entryName" FontSize="20" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3"/>
+
+        <Label Text=" Nazwisko:" Grid.Row="2" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Center" FontSize="20"/>
+        <Entry x:Name="entrySurname" FontSize="20" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3"/>
+
+        <RadioButton x:Name="radioMale" Content="Mężczyzna" FontSize="16" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" IsChecked="true"/>
+        <RadioButton x:Name="radioFemale" Content="Kobieta" FontSize="16" Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2"/>
+
+        <Label Text="Adres e-mail:" Grid.Row="4" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Center" FontSize="20"/>
+        <Entry x:Name="entryEmail" FontSize="20" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="3"/>
+
+        <Label Text="Województwo:" Grid.Row="5" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Center" FontSize="20"/>
+        <Picker x:Name="pickerState" FontSize="20" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="3">
+            <Picker.Items>
+                <x:String>Dolnośląskie</x:String>
+                <x:String>Kujawsko-pomorskie</x:String>
+                <x:String>Lubelskie</x:String>
+                <x:String>Lubuskie</x:String>
+                <x:String>Łódzkie</x:String>
+                <x:String>Małopolskie</x:String>
+                <x:String>Mazowieckie</x:String>
+                <x:String>Opolskie</x:String>
+                <x:String>Podkarpackie</x:String>
+                <x:String>Podlaskie</x:String>
+                <x:String>Pomorskie</x:String>
+                <x:String>Śląskie</x:String>
+                <x:String>Świętokrzyskie</x:String>
+                <x:String>Warmińsko-mazurskie</x:String>
+                <x:String>Wielkopolskie</x:String>
+                <x:String>Zachodniopomorskie</x:String>
+            </Picker.Items>
+        </Picker>
+
+        <Label Text="Numer:" Grid.Row="6" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Center" FontSize="20"/>
+        <Entry x:Name="entryNumber" FontSize="20" Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="3" Keyboard="Numeric"/>
+
+        <Label x:Name="errorLabel" FontSize="20" Grid.Row="7" Grid.ColumnSpan="5" TextColor="Red"/>
+
+        <Button Text="Edytuj" Grid.Row="8" Grid.ColumnSpan="5" Clicked="editPerson"/>
+    </Grid>
+</ContentPage>
